@@ -75,7 +75,9 @@ public class EncryptorGUI extends JFrame {
             clearText = Base64Cipher.decrypt(cipherText);
         } else if (selectedCipher == CipherMethod.XOR) {
             clearText = XorCipher.decrypt(cipherText, key);
-        }
+        } else if (selectedCipher == CipherMethod.REVERSE) {
+	    clearText = ReversingCipher.decrypt(cipherText);
+	}
 
         this.taClearText.setText(clearText);
     }
@@ -94,7 +96,7 @@ public class EncryptorGUI extends JFrame {
             cipher = XorCipher.encrypt(clearText, key);
         } else if (selectedCipher == CipherMethod.REVERSE) {
             cipher = ReversingCipher.encrypt(clearText);
-        }
+        } 
 
         this.taCipherText.setText(cipher);
     }
